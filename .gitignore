@@ -1,0 +1,26 @@
+node_modules
+# dependencies
+node_modules/
+.pnp/
+.pnp.cjs
+
+# next.js
+.next/
+out/
+.turbo/
+
+# vercel (local project link)
+.vercel/
+
+# env / secrets
+.env
+.env.*
+
+# logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# misc
+.DS_Store
+Thumbs.db

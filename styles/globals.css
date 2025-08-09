@@ -1,0 +1,21 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #f7f7f5;
+  --muted: #b3b3b3;
+  --card: #111112;
+}
+html, body {
+  height: 100%;
+}
+body {
+  color: var(--fg);
+  background: var(--bg);
+}
+.border-gold {
+  border-color: theme(colors.gold.DEFAULT);
+}
