@@ -7,7 +7,7 @@ export default function Proof() {
       <Reveal>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-neutral-400">
           <span className="font-medium text-neutral-200">
-            Worked With and Built for
+            Worked with and Built for
           </span>
           {PROOF.map((p) => (
             <span key={p} className="opacity-80">
