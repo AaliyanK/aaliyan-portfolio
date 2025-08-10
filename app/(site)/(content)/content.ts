@@ -50,7 +50,14 @@ export const PROJECTS: Project[] = [
       "Slack API",
       "Tailwind CSS",
     ],
-    image: ["/images/comms1.png", "/images/comms2.png"],
+    image: [
+      "/images/comms1.png",
+      "/images/comms3.png",
+      "/images/comms4.png",
+      "/images/comms5.png",
+      "/images/comms6.png",
+      "/images/comms7.png",
+    ],
   },
   {
     key: "insights",
@@ -73,9 +80,11 @@ export const PROJECTS: Project[] = [
       "Tailwind CSS",
     ],
     image: [
+      "/images/insights3.png",
       "/images/insights1.png",
       "/images/insights2.png",
-      "/images/insights3.png",
+      "/images/insights4.png",
+      "/images/insights5.png",
     ],
   },
   {
@@ -98,7 +107,12 @@ export const PROJECTS: Project[] = [
       "TikTok Shop",
       "Amazon",
     ],
-    image: "/images/nuve1.png",
+    image: [
+      "/images/nuve1.png",
+      "/images/nuve2.png",
+      "/images/nuve3.png",
+      "/images/nuve4.png",
+    ],
   },
   {
     key: "furniture",
@@ -110,7 +124,12 @@ export const PROJECTS: Project[] = [
       "Analytics & lifecycle: GA4, GTM, Klaviyo, server‑side tracking",
     ],
     stack: ["Shopify", "GA4", "GTM", "Klaviyo", "Meta Ads", "Google Ads"],
-    image: "/images/nord.png",
+    image: [
+      "/images/nord.png",
+      "/images/nord2.png",
+      "/images/nord3.png",
+      "/images/nord4.png",
+    ],
   },
   {
     key: "gaming",
@@ -131,7 +150,13 @@ export const PROJECTS: Project[] = [
       "Google Ads",
       "TikTok",
     ],
-    image: ["/images/nost1.png", "/images/nost2.png"],
+    image: [
+      "/images/nost3.png",
+      "/images/nost4.png",
+      "/images/nost5.png",
+      "/images/nost1.png",
+      "/images/nost2.png",
+    ],
   },
   {
     key: "youtube",
