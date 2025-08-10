@@ -48,6 +48,7 @@ export const PROJECTS: Project[] = [
       "Flask",
       "SQLAlchemy",
       "Slack API",
+      "Tailwind CSS",
     ],
     image: ["/images/comms1.png", "/images/comms2.png"],
   },
@@ -69,6 +70,7 @@ export const PROJECTS: Project[] = [
       "Flask",
       "SQLAlchemy",
       "AWS SQS",
+      "Tailwind CSS",
     ],
     image: [
       "/images/insights1.png",

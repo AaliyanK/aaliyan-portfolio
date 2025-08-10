@@ -1,9 +1,21 @@
 "use client";
 import { Section, Reveal } from "../(components)/ui";
+import {
+  Briefcase,
+  BarChart3,
+  Database,
+  Shirt,
+  Factory,
+  Lamp,
+  Sofa,
+  Gamepad2,
+  Youtube,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /* ---------- Types ---------- */
 type TL = {
-  icon: string;
+  Icon: LucideIcon;
   company: string;
   role: string;
   dates: string;
@@ -17,7 +29,7 @@ type TL = {
 /* ---------- Career ---------- */
 const CAREER: TL[] = [
   {
-    icon: "💼",
+    Icon: Briefcase,
     company: "Epoch",
     role: "Full-Stack Software Engineer (Product)",
     dates: "May 2023 — Present",
@@ -50,10 +62,12 @@ const CAREER: TL[] = [
       "SQLAlchemy",
       "Slack API",
       "ShadCN",
+      "Tailwind CSS",
+      "AWS S3",
     ],
   },
   {
-    icon: "📊",
+    Icon: BarChart3,
     company: "Epoch",
     role: "Full-Stack Software Engineer",
     dates: "Jan 2022 — Aug 2022",
@@ -81,10 +95,11 @@ const CAREER: TL[] = [
       "Flask",
       "SQLAlchemy",
       "AWS SQS",
+      "Tailwind CSS",
     ],
   },
   {
-    icon: "🏦",
+    Icon: Database,
     company: "RBC — Borealis AI",
     role: "Data & Full-Stack Engineer",
     dates: "Jan 2021 — Apr 2021",
@@ -101,7 +116,7 @@ const CAREER: TL[] = [
     tech: ["Python", "Airflow", "Spark", "React", "Flask", "OpenShift"],
   },
   {
-    icon: "👗",
+    Icon: Shirt,
     company: "Pronti AI",
     role: "Software Engineer (Founding team)",
     dates: "May 2020 — Aug 2020",
@@ -118,7 +133,7 @@ const CAREER: TL[] = [
     tech: ["Python", "Flask", "REST", "PostgreSQL", "AWS S3"],
   },
   {
-    icon: "🏭",
+    Icon: Factory,
     company: "PepsiCo Beverages",
     role: "Supply Chain Engineer",
     dates: "2019",
@@ -140,7 +155,7 @@ const CAREER: TL[] = [
 /* ---------- Ventures ---------- */
 const VENTURES: TL[] = [
   {
-    icon: "💡",
+    Icon: Lamp, // switch to Lightbulb if you prefer
     company: "Nuve — DTC Home Goods Lighting",
     role: "Full-Stack & Growth",
     dates: "2024 — present",
@@ -168,7 +183,7 @@ const VENTURES: TL[] = [
     ],
   },
   {
-    icon: "🛋️",
+    Icon: Sofa,
     company: "DTC Luxury Furniture Brand",
     role: "Full-Stack & Growth",
     dates: "2024 — present",
@@ -181,7 +196,7 @@ const VENTURES: TL[] = [
     tech: ["Shopify", "GA4", "GTM", "Klaviyo", "Meta Ads", "Google Ads"],
   },
   {
-    icon: "🎮",
+    Icon: Gamepad2,
     company: "DTC Retro Gaming Brand (Exited)",
     role: "Full-Stack & Growth",
     dates: "2024",
@@ -209,7 +224,7 @@ const VENTURES: TL[] = [
     ],
   },
   {
-    icon: "▶️",
+    Icon: Youtube,
     company: "YouTube — AaliyanKapWrites",
     role: "Creator",
     dates: "2023 — Present",
@@ -227,7 +242,7 @@ function Header({ t }: { t: TL }) {
   return (
     <div className="flex items-baseline justify-between gap-4">
       <h3 className="text-lg font-semibold leading-tight">
-        <span className="whitespace-pre-wrap ">{t.company}</span>
+        <span className="whitespace-pre-wrap">{t.company}</span>
         <span className="text-neutral-400">: {t.role}</span>
       </h3>
       <span className="text-xs text-neutral-400 shrink-0">{t.dates}</span>
@@ -260,14 +275,16 @@ function Body({ t }: { t: TL }) {
       </ul>
 
       {t.learnings && t.learnings.length > 0 && (
-        <div className="mt-3 rounded-lg border border-neutral-800 bg-black/30 p-3">
-          <div className="text-xs font-medium text-neutral-400">Learnings</div>
+        <details className="mt-3 rounded-lg border border-neutral-800 bg-black/30 p-3 md:open">
+          <summary className="text-xs font-medium text-neutral-400 cursor-pointer">
+            Learnings
+          </summary>
           <ul className="mt-1 list-disc pl-5 space-y-1 text-sm text-neutral-300">
             {t.learnings.map((l, i) => (
               <li key={i}>{l}</li>
             ))}
           </ul>
-        </div>
+        </details>
       )}
 
       {t.tech && (
@@ -286,25 +303,55 @@ function Body({ t }: { t: TL }) {
   );
 }
 
-/** One centered row with a fixed rail; equal gutter on both sides */
-function Row({ item, index }: { item: TL; index: number }) {
+/** One centered row with a fixed rail; mobile uses continuous connectors */
+function Row({
+  item,
+  index,
+  last,
+}: {
+  item: TL;
+  index: number;
+  last: boolean;
+}) {
   const leftSide = index % 2 === 0;
+
   return (
     <Reveal delay={index * 0.04}>
-      <div className="relative grid grid-cols-1 md:grid-cols-2 items-start md:gap-16">
-        {/* rail node */}
-        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-3 z-10">
-          <div className="h-8 w-8 rounded-full bg-gold text-black grid place-items-center text-sm shadow">
-            {item.icon}
+      {/* Wrapper aligns to the rail */}
+      <div className="group relative grid grid-cols-1 md:grid-cols-2 items-start md:gap-16">
+        {/* MOBILE connectors:
+           - Each connector is half the gap (space-y-16 => 64px => h-8 / -8)
+           - Only one gold dot per gap (on the bottom connector) */}
+        {index !== 0 && (
+          <>
+            {/* top half to the center */}
+            <span className="md:hidden absolute left-1/2 -translate-x-1/2 -top-8 h-8 w-px bg-neutral-700" />
+          </>
+        )}
+        {!last && (
+          <>
+            {/* bottom half to the center */}
+            <span className="md:hidden absolute left-1/2 -translate-x-1/2 -bottom-8 h-8 w-px bg-neutral-700" />
+            {/* single center dot for the gap */}
+            <span className="md:hidden absolute left-1/2 -translate-x-1/2 -bottom-8 h-2 w-2 rounded-full bg-gold" />
+          </>
+        )}
+
+        {/* Desktop node on the rail */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-3 z-10 hidden md:block">
+          <div className="grid h-6 w-6 place-items-center rounded-full ring-1 ring-gold/40 bg-transparent transition group-hover:ring-gold/60 group-hover:bg-gold/10">
+            <item.Icon
+              className="h-3.5 w-3.5 text-neutral-300"
+              strokeWidth={1.6}
+              aria-hidden
+            />
           </div>
         </div>
 
-        {/* card */}
+        {/* Card */}
         <article
           className={[
-            "rounded-xl border border-neutral-800 bg-card p-6",
-            // wider cards so long titles fit on one line
-            "w-full md:max-w-[52rem]",
+            "relative mx-auto w-full rounded-xl border border-neutral-800 bg-card p-5 md:p-6 md:max-w-[52rem]",
             leftSide
               ? "md:col-start-1 md:justify-self-end md:mr-12"
               : "md:col-start-2 md:justify-self-start md:ml-12",
@@ -318,7 +365,7 @@ function Row({ item, index }: { item: TL; index: number }) {
   );
 }
 
-/** Reusable timeline section with its own centered rail */
+/** Section with a desktop rail that pops subtly */
 function TimelineSection({
   id,
   title,
@@ -337,12 +384,20 @@ function TimelineSection({
       </Reveal>
 
       <div className="relative mt-8 mx-auto max-w-6xl">
-        {/* steady center rail */}
-        <div className="pointer-events-none absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gold/60" />
+        {/* desktop center rail with neutral base + gold core */}
+        <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full -translate-x-1/2 md:block">
+          <div className="absolute left-1/2 h-full w-px -translate-x-1/2 bg-neutral-700" />
+          <div className="absolute left-1/2 h-full w-[2px] -translate-x-1/2 opacity-60 bg-[linear-gradient(to_bottom,rgba(219,188,0,0),rgba(219,188,0,0.45),rgba(219,188,0,0))] shadow-[0_0_16px_rgba(219,188,0,0.10)]" />
+        </div>
 
-        <div className="space-y-12">
+        <div className="space-y-16 md:space-y-12">
           {items.map((t, i) => (
-            <Row key={`${id}-${i}`} item={t} index={i} />
+            <Row
+              key={`${id}-${i}`}
+              item={t}
+              index={i}
+              last={i === items.length - 1}
+            />
           ))}
         </div>
       </div>
@@ -355,10 +410,7 @@ export default function Timeline() {
   return (
     <>
       <TimelineSection id="career" title="Career Timeline" items={CAREER} />
-
-      {/* natural gap between the two timelines */}
       <div className="h-10" />
-
       <TimelineSection
         id="entrepreneurship"
         title="Entrepreneurship"

@@ -14,6 +14,7 @@ const languages = [
   "GraphQL",
   "FastAPI",
   "SQLAlchemy",
+  "Tailwind CSS",
 ];
 const tools = [
   "PostgreSQL",
@@ -38,15 +39,16 @@ export default function Skills() {
           Technical Skills
         </h2>
       </Reveal>
-      <div className="mt-6 grid md:grid-cols-2 gap-8">
+
+      <div className="mt-6 grid gap-8 md:grid-cols-2">
         <Reveal>
-          <div>
+          <div className="text-center">
             <h3 className="font-medium">Languages and frameworks</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-2">
               {languages.map((s) => (
                 <span
-                  className="text-xs rounded-full border border-neutral-700 px-3 py-1"
                   key={s}
+                  className="text-xs rounded-full border border-neutral-700 px-3 py-1"
                 >
                   {s}
                 </span>
@@ -54,14 +56,15 @@ export default function Skills() {
             </div>
           </div>
         </Reveal>
+
         <Reveal>
-          <div>
+          <div className="text-center">
             <h3 className="font-medium">Tools and platforms</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-2">
               {tools.map((s) => (
                 <span
-                  className="text-xs rounded-full border border-neutral-700 px-3 py-1"
                   key={s}
+                  className="text-xs rounded-full border border-neutral-700 px-3 py-1"
                 >
                   {s}
                 </span>

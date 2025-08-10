@@ -230,32 +230,32 @@ export default function Hero() {
             {KPIS.map((kpi, i) => (
               <div
                 key={i}
-                className="group relative h-full rounded-2xl border border-white/10
-                           bg-gradient-to-b from-white/[0.04] to-white/[0.02]
-                           p-5 text-left shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset]
-                           transition hover:border-gold/40 hover:shadow-[0_0_0_1px_rgba(219,188,0,0.25),0_12px_30px_rgba(0,0,0,0.45)]"
+                className="group relative h-full overflow-hidden rounded-2xl border border-white/10
+                         bg-gradient-to-b from-white/[0.04] to-white/[0.02] p-5 text-left
+                         shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset]
+                         transition hover:border-gold/40 hover:shadow-[0_0_0_1px_rgba(219,188,0,0.25),0_12px_30px_rgba(0,0,0,0.45)]"
               >
-                {/* icon */}
-                <div
-                  className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full
-                                bg-gold/15 text-gold ring-1 ring-gold/30"
-                >
-                  {kpi.icon}
-                </div>
+                {/* content and icon */}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <div className="text-gold text-2xl font-extrabold tracking-tight">
+                      {kpi.value}
+                    </div>
+                    <div className="mt-1 text-base font-semibold text-white">
+                      {kpi.label}
+                    </div>
+                    <div className="mt-1 text-sm leading-relaxed text-neutral-400">
+                      {kpi.sub}
+                    </div>
+                  </div>
 
-                {/* numbers */}
-                <div className="text-gold text-2xl font-extrabold tracking-tight">
-                  {kpi.value}
-                </div>
-
-                {/* label */}
-                <div className="mt-1 text-base font-semibold text-white">
-                  {kpi.label}
-                </div>
-
-                {/* sub */}
-                <div className="mt-1 text-sm leading-relaxed text-neutral-400">
-                  {kpi.sub}
+                  {/* icon on the right */}
+                  <div
+                    className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full
+                             bg-gold/15 text-gold ring-1 ring-gold/30"
+                  >
+                    {kpi.icon}
+                  </div>
                 </div>
               </div>
             ))}
