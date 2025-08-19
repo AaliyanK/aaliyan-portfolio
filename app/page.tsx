@@ -5,7 +5,6 @@ import Projects from "./(site)/(sections)/Projects";
 import Timeline from "./(site)/(sections)/Timeline";
 import Skills from "./(site)/(sections)/Skills";
 import About from "./(site)/(sections)/About";
-import Contact from "./(site)/(sections)/Contact";
 
 export default function Page() {
   return (
@@ -17,7 +16,6 @@ export default function Page() {
       <Timeline />
       <Skills />
       {/* <About /> */}
-      <Contact />
     </main>
   );
 }

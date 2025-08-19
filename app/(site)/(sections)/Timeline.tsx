@@ -409,7 +409,7 @@ function TimelineSection({
 export default function Timeline() {
   return (
     <>
-      <TimelineSection id="career" title="Career Timeline" items={CAREER} />
+      <TimelineSection id="timeline" title="Career Timeline" items={CAREER} />
       <div className="h-10" />
       <TimelineSection
         id="entrepreneurship"

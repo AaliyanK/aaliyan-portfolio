@@ -15,6 +15,7 @@ const languages = [
   "FastAPI",
   "SQLAlchemy",
   "Tailwind CSS",
+  "Next.js",
 ];
 const tools = [
   "PostgreSQL",
@@ -29,6 +30,8 @@ const tools = [
   "GA4",
   "GTM",
   "Meta Events Manager",
+  "Vercel",
+  "Shadcn/UI",
 ];
 
 export default function Skills() {

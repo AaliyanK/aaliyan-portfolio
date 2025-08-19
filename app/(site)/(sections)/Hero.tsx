@@ -49,7 +49,7 @@ export default function Hero() {
   ];
 
   return (
-    <Section id="top" className="pt-24 md:pt-32">
+    <Section id="top" className="pt-32 md:pt-40">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-8 text-center">
           {/* Stacked name + headline */}
@@ -69,11 +69,18 @@ export default function Hero() {
           </motion.h1>
 
           {/* Social */}
-          <div className="mt-2 flex flex-wrap justify-center items-center gap-6 text-neutral-300">
-            <a
+          <motion.div
+            className="mt-2 flex flex-wrap justify-center items-center gap-6 text-neutral-300"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.a
               href="mailto:aaliyan.kapadia@gmail.com"
               aria-label="Email Aaliyan Kapadia"
               className="hover:text-white transition inline-flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Mail
                 className="h-[18px] w-[18px]"
@@ -81,14 +88,16 @@ export default function Hero() {
                 aria-hidden
               />
               <span>Email</span>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://www.linkedin.com/in/aaliyank/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
               className="hover:text-white transition inline-flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Linkedin
                 className="h-[18px] w-[18px]"
@@ -96,14 +105,16 @@ export default function Hero() {
                 aria-hidden
               />
               <span>LinkedIn</span>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://github.com/AaliyanK"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub profile"
               className="hover:text-white transition inline-flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Github
                 className="h-[18px] w-[18px]"
@@ -111,12 +122,14 @@ export default function Hero() {
                 aria-hidden
               />
               <span>GitHub</span>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="tel:+19057834673"
               aria-label="Call Aaliyan Kapadia"
               className="hover:text-white transition inline-flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Phone
                 className="h-[18px] w-[18px]"
@@ -124,8 +137,8 @@ export default function Hero() {
                 aria-hidden
               />
               <span>905-783-4673</span>
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
           <Reveal>
             <p className="mt-4 max-w-3xl text-lg text-neutral-300">
@@ -143,12 +156,17 @@ export default function Hero() {
           {/* KPI cards */}
           <div className="mt-10 grid w-full max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {KPIS.map((kpi, i) => (
-              <div
+              <motion.div
                 key={i}
                 className="group relative h-full overflow-hidden rounded-2xl border border-white/10
                            bg-gradient-to-b from-white/[0.04] to-white/[0.02] p-5 text-left
                            shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset]
                            transition hover:border-gold/40 hover:shadow-[0_0_0_1px_rgba(219,188,0,0.25),0_12px_30px_rgba(0,0,0,0.45)]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ y: -4 }}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
@@ -164,18 +182,20 @@ export default function Hero() {
                   </div>
 
                   {/* icon on the right (Lucide) */}
-                  <div
+                  <motion.div
                     className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full
                                bg-gold/15 text-gold ring-1 ring-gold/30"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <kpi.Icon
                       className="h-[18px] w-[18px]"
                       strokeWidth={1.8}
                       aria-hidden
                     />
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -187,12 +207,14 @@ export default function Hero() {
               >
                 View projects
               </a> */}
-              <a
+              <motion.a
                 href="/resume.pdf"
                 className="rounded-full border border-neutral-600 px-5 py-3 text-sm hover:bg-neutral-200 hover:text-black transition"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Download resume
-              </a>
+              </motion.a>
             </div>
           </Reveal>
         </div>

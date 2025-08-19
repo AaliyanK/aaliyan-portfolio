@@ -306,7 +306,7 @@ function Carousel({
           >
             <Image
               src={images[index]}
-              alt={`${alt} ${index + 1}`}
+              alt={`${alt} - Screenshot ${index + 1}`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 90vw, 50vw"
@@ -379,6 +379,41 @@ export default function Projects() {
 
   return (
     <Section id="projects">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Featured Projects",
+            description:
+              "Portfolio of featured software projects and applications",
+            itemListElement: PROJECTS.map((project, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "SoftwareApplication",
+                name: project.title,
+                description: project.description || project.tldr.join(" "),
+                url: project.link,
+                applicationCategory: "BusinessApplication",
+                operatingSystem: "Web",
+                programmingLanguage: project.stack.filter((s) =>
+                  [
+                    "React",
+                    "TypeScript",
+                    "Python",
+                    "JavaScript",
+                    "Node.js",
+                  ].includes(s)
+                ),
+                keywords:
+                  project.keywords?.join(", ") || project.stack.join(", "),
+              },
+            })),
+          }),
+        }}
+      />
       <Reveal>
         <h2 className="text-2xl md:text-3xl font-semibold text-center">
           Featured Projects
@@ -393,17 +428,29 @@ export default function Projects() {
           );
           return (
             <Reveal key={p.key}>
-              <article className="rounded-2xl border border-neutral-800 overflow-hidden bg-card">
+              <article
+                className="rounded-2xl border border-neutral-800 overflow-hidden bg-card"
+                itemScope
+                itemType="https://schema.org/SoftwareApplication"
+              >
                 {images.length > 0 && (
                   <Carousel
                     images={images}
-                    alt={p.title}
+                    alt={p.description || p.title}
                     onZoom={(i) => setLightbox({ images, index: i })}
                   />
                 )}
 
                 <div className="p-6">
-                  <h3 className="text-xl font-medium">{p.title}</h3>
+                  <h3 className="text-xl font-medium" itemProp="name">
+                    {p.title}
+                  </h3>
+                  {p.description && (
+                    <meta itemProp="description" content={p.description} />
+                  )}
+                  {p.keywords && (
+                    <meta itemProp="keywords" content={p.keywords.join(", ")} />
+                  )}
                   <ul className="mt-3 text-sm text-neutral-300 space-y-1">
                     {p.tldr.map((t, i) => (
                       <li key={i}>• {t}</li>
@@ -419,6 +466,34 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
+                  {p.link && (
+                    <div className="mt-4">
+                      <meta itemProp="url" content={p.link} />
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-gold hover:text-gold/80 transition-colors"
+                        itemProp="url"
+                      >
+                        <span>Visit Project</span>
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15,3 21,3 21,9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </article>
             </Reveal>

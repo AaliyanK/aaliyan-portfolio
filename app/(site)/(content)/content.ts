@@ -26,9 +26,58 @@ export type Project = {
   tldr: string[];
   stack: string[];
   image: string | string[]; // can be a carousel
+  link?: string; // optional link to project
+  description?: string; // SEO description
+  keywords?: string[]; // SEO keywords
 };
 
 export const PROJECTS: Project[] = [
+  {
+    key: "enterprise-ai",
+    title: "Playfield: Enterprise Superintelligence App",
+    tldr: [
+      "Connects seamlessly with enterprise systems (e.g., Microsoft 365 via MCP server)",
+      "Uses reasoning + tree algorithms to understand context and propose plans",
+      "Enables employees to retrieve data, make changes, or spin up apps (e.g., live PDF viewer) in a secure sandbox",
+      "Working with a banking design partner to build a secure prototype",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Python",
+      "Node.js",
+      "Flask",
+      "SQLAlchemy",
+      "MCP",
+      "Enterprise AI",
+      "Security",
+      "Modal",
+    ],
+    image: [
+      "/images/p1.png",
+      "/images/p2.png",
+      "/images/p3.png",
+      "/images/p4.png",
+      "/images/p5.png",
+      "/images/p6.png",
+      "/images/p7.png",
+    ],
+    link: "https://playfield-ashy.vercel.app/",
+    description:
+      "Enterprise-grade AI system that connects to internal tools, understands context, and empowers employees to securely query and modify data in real time. Built with React, TypeScript, Python, and MCP for seamless enterprise integration.",
+    keywords: [
+      "enterprise AI",
+      "superintelligence",
+      "MCP server",
+      "enterprise automation",
+      "AI assistant",
+      "enterprise security",
+      "React TypeScript",
+      "Python Flask",
+      "enterprise integration",
+      "AI workflow automation",
+    ],
+  },
   {
     key: "communities",
     title: "Communities Platform With Slack Integration",
@@ -58,6 +107,20 @@ export const PROJECTS: Project[] = [
       "/images/comms6.png",
       "/images/comms7.png",
     ],
+    description:
+      "Scalable community platform with 50K+ monthly active users, featuring Slack integration, automated onboarding, and comprehensive analytics. Built with React, GraphQL, and Python Flask.",
+    keywords: [
+      "community platform",
+      "Slack integration",
+      "user onboarding",
+      "GraphQL API",
+      "React TypeScript",
+      "Python Flask",
+      "community management",
+      "event management",
+      "user analytics",
+      "automation workflows",
+    ],
   },
   {
     key: "insights",
@@ -86,6 +149,20 @@ export const PROJECTS: Project[] = [
       "/images/insights4.png",
       "/images/insights5.png",
     ],
+    description:
+      "Enterprise analytics dashboard with queue-based compute using AWS SQS, featuring heatmaps, dynamic charts, and real-time reporting. Delivered $50K+ in upsells for enterprise customers.",
+    keywords: [
+      "analytics dashboard",
+      "AWS SQS",
+      "queue based compute",
+      "data visualization",
+      "heatmaps",
+      "enterprise reporting",
+      "React GraphQL",
+      "Python Flask",
+      "real-time analytics",
+      "business intelligence",
+    ],
   },
   {
     key: "dtc-lighting",
@@ -113,6 +190,20 @@ export const PROJECTS: Project[] = [
       "/images/nuve3.png",
       "/images/nuve4.png",
     ],
+    description:
+      "Scaled luxury lighting DTC brand to $100K+ revenue in 2 months with 1.8× ROI. Full-funnel marketing across Meta, Google, TikTok Shop, and Amazon with custom analytics.",
+    keywords: [
+      "DTC ecommerce",
+      "luxury lighting",
+      "Shopify store",
+      "Meta ads",
+      "Google ads",
+      "TikTok shop",
+      "Amazon marketplace",
+      "conversion optimization",
+      "GA4 analytics",
+      "Klaviyo marketing",
+    ],
   },
   {
     key: "furniture",
@@ -129,6 +220,20 @@ export const PROJECTS: Project[] = [
       "/images/nord2.png",
       "/images/nord3.png",
       "/images/nord4.png",
+    ],
+    description:
+      "Luxury furniture DTC brand with exclusive warehouse partnership, influencer marketing, and high-converting Shopify funnel with A/B tested landing pages.",
+    keywords: [
+      "luxury furniture",
+      "DTC brand",
+      "Shopify ecommerce",
+      "influencer marketing",
+      "paid social",
+      "Google ads",
+      "Meta ads",
+      "A/B testing",
+      "conversion rate optimization",
+      "warehouse partnership",
     ],
   },
   {
@@ -157,6 +262,20 @@ export const PROJECTS: Project[] = [
       "/images/nost1.png",
       "/images/nost2.png",
     ],
+    description:
+      "Scaled retro gaming ecommerce brand to $1M+ revenue in 8 months with 16K+ social followers. High-ROAS video ads and influencer partnerships with celebrity creators.",
+    keywords: [
+      "retro gaming",
+      "ecommerce brand",
+      "Shopify store",
+      "influencer partnerships",
+      "video ads",
+      "high ROAS",
+      "Meta ads",
+      "Google ads",
+      "TikTok marketing",
+      "email marketing",
+    ],
   },
   {
     key: "youtube",
@@ -168,5 +287,19 @@ export const PROJECTS: Project[] = [
     ],
     stack: ["YouTube", "DaVinci Resolve", "Analytics", "Canva"],
     image: "/images/youtube1.png",
+    description:
+      "Monetized YouTube channel with 500K+ lifetime views and $5K+ ad revenue. Long-form video essays with scripting, editing, and audience growth strategies.",
+    keywords: [
+      "YouTube channel",
+      "video content creation",
+      "long-form videos",
+      "video editing",
+      "DaVinci Resolve",
+      "content monetization",
+      "audience growth",
+      "video essays",
+      "YouTube analytics",
+      "content strategy",
+    ],
   },
 ];

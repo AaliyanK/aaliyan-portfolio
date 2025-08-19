@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
 import "./../styles/globals.css";
+import Navbar from "./(site)/(components)/Navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aaliyan-portfolio-dun.vercel.app"),
-  title: "Aaliyan Kapadia",
-  description: "Product minded full stack engineer",
+  title: "Aaliyan Kapadia - Product Minded Full Stack Engineer",
+  description:
+    "Full-stack software engineer specializing in enterprise AI, React, TypeScript, and Python. Built enterprise superintelligence apps, scaled ecommerce brands, and delivered solutions for companies like Reddit and Instacart.",
+  keywords: [
+    "full stack engineer",
+    "enterprise AI",
+    "React developer",
+    "TypeScript developer",
+    "Python developer",
+    "enterprise software",
+    "AI applications",
+    "software engineering",
+    "product development",
+    "enterprise automation",
+  ],
   icons: {
     icon: [{ url: "/assets/favicon.png", sizes: "32x32", type: "image/png" }],
     apple: {
@@ -31,16 +45,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "Aaliyan Kapadia",
-    description: "Product minded full stack engineer",
+    title: "Aaliyan Kapadia - Product Minded Full Stack Engineer",
+    description:
+      "Full-stack software engineer specializing in enterprise AI, React, TypeScript, and Python. Built enterprise superintelligence apps, scaled ecommerce brands, and delivered solutions for companies like Reddit and Instacart.",
     images: [
       { url: "/assets/dark_og_text_square.png", width: 1200, height: 1200 },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aaliyan Kapadia",
-    description: "Product minded full stack engineer",
+    title: "Aaliyan Kapadia - Product Minded Full Stack Engineer",
+    description:
+      "Full-stack software engineer specializing in enterprise AI, React, TypeScript, and Python. Built enterprise superintelligence apps, scaled ecommerce brands, and delivered solutions for companies like Reddit and Instacart.",
     images: ["/assets/dark_og_text_square.png"],
   },
   themeColor: "#000000",
@@ -54,6 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased selection:bg-gold-600/40 selection:text-white">
+        <Navbar />
         {children}
       </body>
     </html>
